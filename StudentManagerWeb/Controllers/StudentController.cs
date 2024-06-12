@@ -28,10 +28,14 @@ namespace StudentManagerWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Student obj)
         {
-            _db.Students.Add(obj);
-            _db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _db.Students.Add(obj);
+                _db.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
     }
 }

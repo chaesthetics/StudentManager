@@ -5,23 +5,27 @@
             <h3 class="text-primary">Add Student</h3>
             <hr />
         </div>
+        <div class="text-danger" asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name">Fullname</label>
             <input asp-for="Name" class="form-control" placeholder="Student Name"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Course">Course</label>
-            <select asp-for="Course" class="form-select mb-4" id="myCourse">
+            <select asp-for="Course" class="form-select" id="myCourse">
+                <option value="" selected disabled hidden>--Choose Section--</option>
                 <option value="Bachelor of Science in Information Technology">BSIT</option>
                 <option value="Bachelor of Science in Computer Science">BSCS</option>
                 <option value="Bachelor of Science in Marine Engineering">BSME</option>
                 <option value="Bachelor of Science in Marine Transportation">BSMT</option>
             </select>
+            <span asp-validation-for="Course" class="text-danger"></span>
+        </div>
             <button type="submit" class="btn btn-primary" stype="width:150px">Create</button>
             <a asp-controller="Student" asp-action="index" class="btn btn-warning" style="width:150px">
                 Back to list
             </a>
-        </div>
     </div>
 </form>
 @* <script>
@@ -31,3 +35,8 @@
     }
 </script> *@
            
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

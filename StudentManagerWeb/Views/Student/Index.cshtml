@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Index";
+    string userName = "Auriel James Fernandez";
+}
+
+<div class="container py-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h4 class="text-primary">Student List</h4>
+        </div> 
+        <div class="col-6 text-end">
+            <a asp-controller="Student" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbsp Add Student</a>
+        </div>
+    </div>
+    <br />
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Fullname</th>
+            <th>Course</th>
+            <th>TimeStamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model){
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Course</td>
+                <td>@student.CreatedDateTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

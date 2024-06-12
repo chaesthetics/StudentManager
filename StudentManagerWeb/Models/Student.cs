@@ -9,7 +9,6 @@ namespace StudentManagerWeb.Models
         public int Id { get; set; }
         [Required]
         [DisplayName("Student Fullname")]
-        [Range(5,38, ErrorMessage ="Fullname ba yan?")]
         public string Name { get; set; }
         [Required]
         [DisplayName("Student Course")]

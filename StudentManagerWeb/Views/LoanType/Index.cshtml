@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LoanType>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container py-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h4 class="text-primary">Loan Type List</h4>
+        </div>
+        <div class="col-6 text-end">
+            <a @* asp-controller="Student" asp-action="Create" *@ class="btn btn-dark"><i class="bi bi-plus-circle"></i> &nbsp Add Type</a>
+        </div>
+    </div>
+    <br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Rate</th>
+                <th>Minimum Value</th>
+                <th>Maximum Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var LoanType in Model){
+                <tr>
+                    <td>@LoanType.Type</td>
+                    <td>@LoanType.Rate</td>
+                    <td>@LoanType.MinLoan</td>
+                    <td>@LoanType.MaxLoan</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

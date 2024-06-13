@@ -9,11 +9,11 @@ namespace StudentManagerWeb.Models
         [Required]
         public string Type { get; set; }
         [Required]
-        public float Rate { get; set; }
+        public decimal Rate { get; set; }
         [Required]
-        public float MinLoan { get; set; }
+        public decimal MinLoan { get; set; }
         [Required]
-        public float MaxLoan { get; set; }
+        public decimal MaxLoan { get; set; }
 
     }
 }

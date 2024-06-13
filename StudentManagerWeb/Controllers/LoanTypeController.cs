@@ -18,5 +18,9 @@ namespace StudentManagerWeb.Controllers
             IEnumerable<LoanType> objLoantypeList = _db.loanTypes;
             return View(objLoantypeList);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

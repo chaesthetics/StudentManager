@@ -18,5 +18,22 @@ namespace StudentManagerWeb.Controllers
             IEnumerable<LoanType> objLoantypeList = _db.loanTypes;
             return View(objLoantypeList);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(LoanType obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.loanTypes.Add(obj);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
     }
 }

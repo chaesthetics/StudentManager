@@ -1,0 +1,69 @@
+﻿@model LoanItem
+
+@{
+    var data = ViewBag.TypeList;
+}
+<form method="post">
+    <div class="p-4 mt-4 border">
+        <div class="row pb-2">
+            <h3 class="mb-3">Add Loan Item</h3>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Type">Loan Type</label>
+            <select class="w-100 form-control" asp-for="Type" id="typeValue" onchange="typeChanged()">
+                <option value="" disabled selected hidden>--Choose Item--</option>
+                @foreach(var obj in ViewBag.Typelist)
+                {
+                    <option value="@obj.Id" rating="@obj.Rate" minLoan="@obj.MinLoan" maxLoan="@obj.MaxLoan">@obj.Type</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Amount">Amount</label>
+            <input asp-for="Amount" id="amount" onchange="amountChanged()" type="number" step="0.01" class="w-100 form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ComputedRate">Computed Rate</label>
+            <input asp-for="ComputedRate" id="computedrate" value="" type="number" class="form-control w-100" readonly/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" class="form-control w-100"/>
+        </div>
+        <div class="mb-4">
+            <button class="btn btn-primary" type="submit">Add Loan Item</button>
+            <a class="btn btn-secondary" asp-controller="LoanItem" asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
+<script>
+    var multiplier = 0;
+    var inputAmount = 0;
+    var inputMin = 0;
+    var inputMax = 0;
+    var Computedrate = document.getElementById("computedrate");
+    function amountChanged() {
+        inputAmount = document.getElementById("amount").value;
+        var computedValue = inputAmount * multiplier;
+        Computedrate.value = computedValue.toFixed(2);
+    }
+    function typeChanged(){
+        var typeId = $('#typeValue').val();
+        inputMin = $('#typeValue').find('option:selected').attr('MinLoan');
+        inputMax = $('#typeValue').find('option:selected').attr('MaxLoan');
+        multiplier = $('#typeValue').find('option:selected').attr('rating');
+
+        $('#amount').attr('max', inputMax);
+        $('#amount').attr('min', inputMin);
+        var computedValue = inputAmount * multiplier;
+        Computedrate.value = computedValue.toFixed(2);
+    }
+</script>

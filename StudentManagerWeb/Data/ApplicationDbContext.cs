@@ -10,5 +10,6 @@ namespace StudentManagerWeb.Data
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<LoanType> loanTypes { get; set; }
+        public DbSet<LoanItem> LoanItems { get; set; }
     }
 }

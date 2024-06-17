@@ -1,0 +1,43 @@
+﻿@model LoanType
+
+<form method="post">
+    <div class="border p-4 mt-4">
+        <div class="row pb-2">
+            <h3 class="text-primary">Update Loan type</h3>
+            <hr />
+            <div class="mb-3">
+                <label asp-for="Type">Type Name</label>
+                <input asp-for="Type" class="form-control" style="width:contain" type="text">
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Rate">Rating</label>
+                <input asp-for="Rate" step="0.01" class="form-control" type="Number" />
+                <span class="text-danger" asp-validation-for="Rate"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="MinLoan">Minimum Value</label>
+                <input asp-for="MinLoan" step="0.01" class="form-control" type="Number" />
+                <span class="text-danger" asp-validation-for="MinLoan"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="MaxLoan">Maximum Value</label>
+                <input asp-for="MaxLoan" step="0.01" class="form-control" type="Number" />
+                <span class="text-danger" asp-validation-for="MaxLoan"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" stype="width:150px">Update</button>
+                <a asp-controller="LoanType" asp-action="Edit" class="btn btn-warning" style="width:150px">
+                    Back to list
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

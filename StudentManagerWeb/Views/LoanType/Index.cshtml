@@ -8,7 +8,7 @@
             <h4 class="text-primary">Loan Type List</h4>
         </div>
         <div class="col-6 text-end">
-            <a @* asp-controller="Student" asp-action="Create" *@ class="btn btn-dark"><i class="bi bi-plus-circle"></i> &nbsp Add Type</a>
+            <a asp-controller="LoanType" asp-action="Create" class="btn btn-dark"><i class="bi bi-plus-circle"></i> &nbsp Add Type</a>
         </div>
     </div>
     <br />
@@ -19,6 +19,7 @@
                 <th>Rate</th>
                 <th>Minimum Value</th>
                 <th>Maximum Value</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,18 @@
                     <td>@LoanType.Rate</td>
                     <td>@LoanType.MinLoan</td>
                     <td>@LoanType.MaxLoan</td>
+                    <td>
+                        <div class="w-45 btn-group" role="group">
+                            <a class="btn btn-success" asp-controller="LoanType" asp-action="Edit" asp-route-id="@LoanType.Id">
+                                <i class="bi bi-pencil-square"></i>Edit
+                            </a>
+                        </div>
+                        <div class="w-45 btn-group" role="group">
+                            <a class="btn btn-primary" asp-controller="LoanType" asp-action="Delete" asp-route-id="@LoanType.Id">
+                                <i class="bi bi-trash"></i>Delete
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>

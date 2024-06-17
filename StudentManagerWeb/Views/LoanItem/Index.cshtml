@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LoanItem>
+
+<div>
+    <div class="pt-4 row mb-4">
+        <div class="col-6">
+            <h3 class="text-primary col-6">Loan List</h3>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="LoanItem" asp-action="Create" class="btn btn-dark"><i class="bi bi-plus-circle"></i> &nbsp Add Type</a>
+        </div>
+    </div>
+    <table class="table table-bordered tabled-striped">
+        <thead>
+            <tr>
+                <th>Type Name</th>
+                <th>Loan Amount</th>
+                <th>Loan Rate</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Type</td>
+                    <td>@obj.Amount</td>
+                    <td>@obj.ComputedRate</td>
+                    <td>@obj.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

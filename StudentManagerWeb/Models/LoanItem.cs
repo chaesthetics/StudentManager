@@ -2,18 +2,19 @@
 
 namespace StudentManagerWeb.Models
 {
-    public class LoanType
+    public class LoanItem
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Type { get; set; }
+        public int Type { get; set; }
         [Required]
-        public decimal Rate { get; set; }
+        public decimal Amount {  get; set; }
         [Required]
-        public decimal MinLoan { get; set; }
+        public decimal ComputedRate { get; set; }
         [Required]
-        public decimal MaxLoan { get; set; }
+        public string Description {  get; set; }
+
 
     }
 }
